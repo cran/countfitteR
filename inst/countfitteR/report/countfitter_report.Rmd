@@ -1,0 +1,83 @@
+---
+title: "countfitteR report"
+author: "Michał Burdukiewicz, Stefan Rödiger, Jarosław Chilimoniuk"
+date: ""
+output:
+html_document:
+css: report.css
+toc: true
+---
+
+# countfitteR
+
+```{r echo=FALSE, results='asis'}
+library(knitr)
+opts_chunk$set(echo=FALSE, results='asis', fig.align='center', fig.width=14, warning = FALSE)
+# TO DO add warning = FALSE later
+library(xtable)
+
+source("ggtheme.R")
+print_table <- function(x)
+  print(xtable(x), type = "html", sanitize.colnames.function = function(x) x, digits = 4,
+        include.rownames = FALSE)
+
+```
+
+Report generated on `r Sys.time()`.
+
+Detected input file: `r ifelse(is.null(input[["input_file"]][["name"]]), "none", input[["input_file"]][["name"]])`.  
+<!-- md5sum("/home/jarek/countfitteR/inst/extdata/example_counts.csv") -->
+`r datapath <- input[["input_file"]]`
+`r example_f <- md5sum("../../../data/case_study.rda")`
+`r example_f <- example_f[[1]]`
+`r input_f <- as.character(md5sum(as.character(datapath["datapath"])))`
+
+md5sum of the input file: `r ifelse(is.null(input[["input_file"]][["name"]]), example_f, input_f)`.
+
+## Settings
+
+Confidence level: `r input[["conf_level"]]`.  
+
+Type of analysis: `r ifelse(input[["conf_level"]], "separate experiments", "technical replicates")`.
+
+Models selected: `r paste0(countfitteR:::nice_model_names[input[["chosen_models"]]], collapse = ", ")`.
+
+```{r}
+if(input[["mean_value_rep"]]) {
+  cat("\n",readLines("../readmes/mean_value/1.md"), sep = "    \n")
+  plot(countfitteR:::plot_fitlist(fits()) + cf_theme)
+  dat <- summarized_fits()[, c("count", "lambda", "lower", "upper", "BIC", "model")]
+  cat("\n",readLines("../readmes/mean_value/2.md"), sep = "    \n")
+  print_table(dat)
+  
+}
+```
+
+```{r}
+if(input[["coef_rep"]]) {
+  cat("\n", readLines("../readmes/mean_value/3.md"), sep = "    \n")
+  print_table(summarized_fits()[, c("count", "lambda", "theta", "r", "model")])
+}
+```
+
+```{r}
+if(input[["decision_rep"]]) {
+  cat("\n", readLines("../readmes/mean_value/4.md"), sep = "    \n")
+  cat(countfitteR:::decide(summarized_fits(), input[["sep_exp"]]))
+}
+```
+
+```{r}
+if(input[["cmp_distr_rep"]]) {
+  cat("\n", readLines("../readmes/cmp_distr/1.md"), sep = "    \n")
+  plot(countfitteR:::plot_fitcmp(compared_fits()) + cf_theme)
+  cat("\n")
+  print_table(compared_fits())
+}
+```
+
+# R Session
+
+```{r,results='markup'}
+sessionInfo()
+```

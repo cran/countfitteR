@@ -1,0 +1,26 @@
+{
+  "input": {
+    "chosen_models": [
+      "pois",
+      "nb",
+      "zip",
+      "zinb"
+    ],
+    "cmp_distr_rep": true,
+    "coef_rep": true,
+    "conf_level": 0.95,
+    "csv_type": "csv2",
+    "decision_rep": true,
+    "header": false,
+    "input_file": null,
+    "mean_value_rep": true,
+    "navbar": "Data upload",
+    "sep_exp": true
+  },
+  "output": {
+
+  },
+  "export": {
+
+  }
+}
