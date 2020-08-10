@@ -1,4 +1,4 @@
-## ----eval=TRUE, echo=TRUE------------------------------------------------
+## ----eval=TRUE, echo=TRUE, warning=FALSE--------------------------------------
 # Load countfitteR package
 library(countfitteR)
 

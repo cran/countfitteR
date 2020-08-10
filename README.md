@@ -1,16 +1,27 @@
-[![Build Status](https://api.travis-ci.org/jarochi/countfitteR.png)](https://travis-ci.org/jarochi/countfitteR)
+  <!-- badges: start -->
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/countfitteR)](https://cran.r-project.org/package=countfitteR)
+[![Downloads](http://cranlogs.r-pkg.org/badges/countfitteR)](https://cran.r-project.org/package=countfitteR)
+![pkgdown](https://github.com/biongram/countfitteR/workflows/pkgdown/badge.svg)
+![check](https://github.com/biongram/countfitteR/workflows/check/badge.svg)
+[![R build status](https://github.com/biongram/countfitteR/workflows/R-CMD-check/badge.svg)](https://github.com/biongram/countfitteR/actions)
+  <!-- badges: end -->
 
 # countfitteR
 
-countfitteR is a web server based on shiny technology for selecting the most appropriate count distribution to the dataset supplied by an user.
+countfitteR is a web server based on Shiny technology for selecting the most appropriate count distribution in provided data sets.
 
 ## Installation
 
-*countfitteR* is net yet available on [CRAN](http://cran.us.r-project.org/). However, you 
-can install the latest development version of the code using the following code:
+*countfitteR* is available on [CRAN](https://cran.r-project.org/package=countfitteR). 
 
 ```R
-source("https://install-github.me/jarochi/countfitteR")
+install.packages("countfitteR")
+```
+
+However, you can also install the developmental version of countfitteR directly from GitHub
+
+```R
+devtools::install_github("biongram/countfitteR")
 ```
 
 ## Run countfitteR
@@ -18,23 +29,20 @@ source("https://install-github.me/jarochi/countfitteR")
 To run countfitteR type the following command into an R console.
 
 ```R
-library(countfitteR)
-require(shiny); countfitteR::countfitteR_gui()
+countfitteR::countfitteR_gui()
 ```
 
 ## How to cite
 
-Jarosław Chilimoniuk, Stefan Rödiger, Michał Burdukiewicz (2018) countfitteR: a web server for the analysis of count data. [https://github.com/jarochi/countfitteR](https://github.com/jarochi/countfitteR)
+Chilimoniuk J, Gosiewska A, Słowik J, Roediger S and Burdukiewicz M (2020). countfitteR: comprehensive automatized evaluation of distribution models for count data. R package version 1.2. https://cran.r-project.org/package=countfitteR.
 
 
 ```tex
-@misc{countfitteR_2018,
-	author = {Chilimoniuk, Jaros\l{}aw and R\"odiger, Stefan and Burdukiewicz, Micha\l{}},
-	month = may,
-	note = R package,
-    title = {{countfitteR}: a web server for the analysis of count data},
-	url = {https://github.com/jarochi/countfitteR},
-	urldate = {2018-07-11},
-	year = {2018}
+@Manual{,
+  author = {Jaroslaw Chilimoniuk and Alicja Gosiewska and Jadwiga Słowik and Stefan Roediger and Michal Burdukiewicz},
+  title = {countfitteR: comprehensive automatized evaluation of distribution models for count data},
+  year = {2020},
+  note = {R package version 1.2},
+  url = {https://CRAN.R-project.org/package=countfitteR},
 }
 ```

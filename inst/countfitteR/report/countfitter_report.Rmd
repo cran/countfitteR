@@ -1,14 +1,15 @@
 ---
 title: "countfitteR report"
-author: "Michał Burdukiewicz, Stefan Rödiger, Jarosław Chilimoniuk"
+author: ""
 date: ""
 output:
-html_document:
-css: report.css
-toc: true
+  html_document:
+    theme: united
+    toc: true
+    toc_float: true
 ---
 
-# countfitteR
+# Overview
 
 ```{r echo=FALSE, results='asis'}
 library(knitr)
@@ -26,15 +27,12 @@ print_table <- function(x)
 Report generated on `r Sys.time()`.
 
 Detected input file: `r ifelse(is.null(input[["input_file"]][["name"]]), "none", input[["input_file"]][["name"]])`.  
-<!-- md5sum("/home/jarek/countfitteR/inst/extdata/example_counts.csv") -->
-`r datapath <- input[["input_file"]]`
-`r example_f <- md5sum("../../../data/case_study.rda")`
-`r example_f <- example_f[[1]]`
-`r input_f <- as.character(md5sum(as.character(datapath["datapath"])))`
 
-md5sum of the input file: `r ifelse(is.null(input[["input_file"]][["name"]]), example_f, input_f)`.
+```{r echo=FALSE, results='asis'}
 
-## Settings
+
+cat("md5sum of the input file:",  ifelse(is.null(input[["input_file"]][["name"]]), "none", md5sum(input[["input_file"]][["datapath"]])))
+```
 
 Confidence level: `r input[["conf_level"]]`.  
 
@@ -46,9 +44,8 @@ Models selected: `r paste0(countfitteR:::nice_model_names[input[["chosen_models"
 if(input[["mean_value_rep"]]) {
   cat("\n",readLines("../readmes/mean_value/1.md"), sep = "    \n")
   plot(countfitteR:::plot_fitlist(fits()) + cf_theme)
-  dat <- summarized_fits()[, c("count", "lambda", "lower", "upper", "BIC", "model")]
   cat("\n",readLines("../readmes/mean_value/2.md"), sep = "    \n")
-  print_table(dat)
+  fit_tab_dt()
   
 }
 ```
@@ -56,7 +53,7 @@ if(input[["mean_value_rep"]]) {
 ```{r}
 if(input[["coef_rep"]]) {
   cat("\n", readLines("../readmes/mean_value/3.md"), sep = "    \n")
-  print_table(summarized_fits()[, c("count", "lambda", "theta", "r", "model")])
+  coef_tab_dt()
 }
 ```
 
@@ -72,12 +69,12 @@ if(input[["cmp_distr_rep"]]) {
   cat("\n", readLines("../readmes/cmp_distr/1.md"), sep = "    \n")
   plot(countfitteR:::plot_fitcmp(compared_fits()) + cf_theme)
   cat("\n")
-  print_table(compared_fits())
+  cmp_sep_tab()
 }
 ```
 
 # R Session
 
 ```{r,results='markup'}
-sessionInfo()
+pander::pander(sessionInfo())
 ```

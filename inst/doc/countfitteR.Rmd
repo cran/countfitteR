@@ -1,6 +1,6 @@
 ---
 title: "countfitteR package - an overview"
-author: "Jarosław Chilimoniuk, Madleine Ruhe, Stefan Rödiger, Michał Burdukiewicz"
+author: "Jarosław Chilimoniuk, Alicja Gosiewska, Jadwiga Słowik, Stefan Rödiger, Michał Burdukiewicz"
 date: "`r Sys.Date()`"
 output: 
   rmarkdown::html_vignette:
@@ -9,10 +9,12 @@ output:
     toc_depth: 4
 header-includes:
     - \usepackage[font={small}]{caption}
-bibliography: "countfitteR.bib"
+bibliography: countfitteR.bib
+# bibliography: bib.json
+# nocite: '@*'
 classoption: a4paper
 vignette: >
-  %\VignetteIndexEntry{countfittR package - an overview}
+  %\VignetteIndexEntry{countfitteR package - an overview}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -29,7 +31,7 @@ alteration of the cell phenotype.
 
 # Data sets
 
-```{r eval=TRUE, echo=TRUE}
+```{r eval=TRUE, echo=TRUE, warning=FALSE}
 # Load countfitteR package
 library(countfitteR)
 
@@ -44,3 +46,4 @@ fit_counts(processed_counts, model = "all")
 
 
 # References
+

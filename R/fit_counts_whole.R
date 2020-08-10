@@ -6,7 +6,9 @@ fit_pois_whole <- function(x, level, ...) {
   coefs <- exp(summ[["coefficients"]][, "Estimate"])
   names(coefs) <- sub("count_name", "", names(coefs))
 
-  confint_raw <- exp(suppressMessages(confint(fit, level =  level)))
+  # confint.default instead of confint
+  # see https://stackoverflow.com/questions/27669101/strange-error-in-glm
+  confint_raw <- exp(confint.default(fit, level =  level))
   rownames(confint_raw) <- names(coefs)
 
   list(fit = fit,
@@ -27,7 +29,7 @@ fit_nb_whole <- function(x, level, ...) {
   coefs <- exp(summ[["coefficients"]][, "Estimate"])
   names(coefs) <- sub("count_name", "", names(coefs))
 
-  confint_raw <- exp(suppressMessages(confint(fit, level =  level)))
+  confint_raw <- exp(confint.default(fit, level =  level))
   rownames(confint_raw) <- names(coefs)
 
   list(fit = fit,
@@ -40,12 +42,12 @@ fit_nb_whole <- function(x, level, ...) {
 
 
 fit_zip_whole <- function(x, level, ...) {
-  fit <- zeroinfl2(value ~ count_name - 1, data = x, dist = "poisson", ...)
+  fit <- zeroinfl(value ~ count_name - 1, data = x, dist = "poisson", ...)
   summ <- summary(fit)
 
   lambdas <- unname(exp(summ[["coefficients"]][["count"]][, "Estimate"]))
   rs <- unname(invlogit(summ[["coefficients"]][["zero"]][, "Estimate"]))
-  confint_raw <- suppressMessages(confint(fit, level =  level))
+  confint_raw <- confint.default(fit, level =  level)
 
   coefs <- lapply(1L:length(lambdas), function(single_coef)
     c(lambda = lambdas[single_coef], r = rs[single_coef])
@@ -61,12 +63,12 @@ fit_zip_whole <- function(x, level, ...) {
 
 
 fit_zinb_whole <- function(x, level, ...) {
-  fit <- zeroinfl2(value ~ count_name - 1, data = x, dist = "negbin", ...)
+  fit <- zeroinfl(value ~ count_name - 1, data = x, dist = "negbin", ...)
   summ <- summary(fit)
 
   lambdas <- unname(exp(summ[["coefficients"]][["count"]][-nrow(summ[["coefficients"]][["count"]]), "Estimate"]))
   rs <- unname(invlogit(summ[["coefficients"]][["zero"]][, "Estimate"]))
-  confint_raw <- suppressMessages(confint(fit, level =  level))
+  confint_raw <- confint.default(fit, level =  level)
 
   coefs <- lapply(1L:length(lambdas), function(single_coef)
     c(lambda = lambdas[single_coef], theta = summ[["theta"]], r = rs[single_coef])
