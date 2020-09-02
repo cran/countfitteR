@@ -1,4 +1,4 @@
-a4c175d516eb300238eebc375c9b8746 *DESCRIPTION
+549aee93bd0fbafa4d6fa15aa272974e *DESCRIPTION
 f5e421da4ca6921332d8982d932419fc *NAMESPACE
 d78e47931dfcf854a5ab699296d5fdd1 *R/compare_fit.R
 29545c40a7c46c6f5b56aeb878eff01e *R/countfitteR-package.R
@@ -12,15 +12,15 @@ a830df48cf8befca46a9ecebdd5edc40 *R/fit_counts_whole.R
 d8b5ccc556c3c30cab4f1ba8ce1aa097 *R/process_counts.R
 117de4e5e454e401fa171b9199f48e42 *R/select_model.R
 36d9d226ff352a6dd98a34cb224763b4 *R/utils.R
-85a7f7ee436e5cc42a011027696c8fba *README.md
+c23ddc7b132050de5631f93578bd9ce2 *README.md
 43c6880d1b5c5181b56266fd2a3d1a78 *build/vignette.rds
 9bd4ded80c5e28b80be9d10f86286e8f *data/case_study.rda
 982409f4930590721448dc22e94fe36d *data/case_study_APC.rda
 b360a3653c6bcdd08871130eeedf5ad7 *data/case_study_FITC.rda
 08141e5b98a09b2fefb434c81983fe68 *data/case_study_all.rda
 a57f068f843b3344fc1f68e5ea5fa33f *data/sim_dat.RData
-f307bfbe2b7ec7ac4f530c4771135d2f *inst/CITATION
-10cd53027348a725acf5268aad062c6d *inst/WORDLIST
+867886c3bc00393ecc0b980bbec7a231 *inst/CITATION
+19d9f0dbdef89a3ae91c09b1108e56d6 *inst/WORDLIST
 60f9721f7f41b12189cd15f6252bb68e *inst/countfitteR/readmes/about.md
 c1a172d51fc0e84358754e543b2cdd9f *inst/countfitteR/readmes/cmp_distr/1.md
 965ac448229e02d471ef2ffa63566f16 *inst/countfitteR/readmes/count_data/1.md
@@ -58,7 +58,7 @@ a7f06cfa4a5b8d37a98661aa60e87052 *inst/countfitteR/ui.R
 c1cdacbf94263b8b68917e4d8761b95a *inst/countfitteR/utils.R
 e2e970b4669a1eaa0901b1d191a5ba16 *inst/doc/countfitteR.R
 5c844097f9985038c0e52b0531e65a74 *inst/doc/countfitteR.Rmd
-a4e368b19400da04b8f98b098aa237e8 *inst/doc/countfitteR.html
+627a5d122de869bdc69b1a0604808fc5 *inst/doc/countfitteR.html
 e4d12999234ac6988f9b82cbc5c71c98 *man/case_study.Rd
 1f130e5e00a0849f798155b2736ca1cf *man/case_study_APC.Rd
 7752535d76aa3874f4c7495a3864ccc5 *man/case_study_FITC.Rd
